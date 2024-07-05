@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-[RequireComponent(typeof(GUIText))]
+[RequireComponent(typeof(Text))]
 public class FpsDisplay : MonoBehaviour {
 
 	public float updateInterval = 0.5f;
@@ -25,15 +26,15 @@ public class FpsDisplay : MonoBehaviour {
 		if (timeLeft <= 0f) {
 			float fps = accumTime / frameCount;
 			string fpsDisplay = System.String.Format("Current framerate: {0:F2}", fps);
-			GetComponent<GUIText>().text = fpsDisplay;
+			GetComponent<Text>().text = fpsDisplay;
 			
 			if (fps < 30)
-				GetComponent<GUIText>().material.color = Color.yellow;
+				GetComponent<Text>().material.color = Color.yellow;
 			else 
 				if (fps < 10)
-					GetComponent<GUIText>().material.color = Color.red;
+					GetComponent<Text>().material.color = Color.red;
 			else
-				GetComponent<GUIText>().material.color = Color.green;
+				GetComponent<Text>().material.color = Color.green;
 
 			timeLeft = updateInterval;
 			accumTime = 0f;
